@@ -1,0 +1,50 @@
+{
+   "pessoas": [
+        {
+            "personal_data": {
+                "name": "Diego"
+            },
+            "country": {
+                "currenty": "Brazil",
+                "born": "Brazil"
+            },
+            "city": {
+                "currenty": "Franca",
+                "born": "Franca",
+                "state": "SP"
+            },
+            "jobs": [
+                {
+                    "role": "Desenvolvedor",
+                    "descriction": "",
+                    "start_date": "",
+                    "end_date": ""
+                }
+            ],
+            "books": [
+                {
+                    "role": "Desenvolvedor",
+                    "descriction": "",
+                    "date": "",
+                    "status": "reading"
+                }
+            ],
+            "posts": [
+                {
+                    "title": "",
+                    "descriction": "",
+                    "tag": "",
+                    "comments": {
+                        "name": "João",
+                        "body": "bla bla bla",
+                        "reply": {
+                            "name": "",
+                            "body": "comment",
+                            "comment": "bla bla"
+                        }
+                    }
+                }
+            ]
+        }
+    ]
+}

@@ -1,33 +1,34 @@
-version: '3'
+version: "3.3"
 
 services:
-  mongo-express:
+  service-db.mongodb:
+    image: mongo
+    restart: always
+    container_name: mongodb
+    ports:
+      - 27017:27017
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: rootuser
+      MONGO_INITDB_ROOT_PASSWORD: rootpass
+    networks:
+      - service-db
+
+  service-db.mongo-express:
     image: mongo-express
+    container_name: mongo-express
+    restart: always
     ports:
       - 8081:8081
     environment:
-      ME_CONFIG_BASICAUTH_USERNAME: diegogborges
-      ME_CONFIG_BASICAUTH_PASSWORD: MongoExpress2019!
-      ME_CONFIG_MONGODB_PORT: 27017
-      ME_CONFIG_MONGODB_ADMINUSERNAME: root
-      ME_CONFIG_MONGODB_ADMINPASSWORD: MongoDB2019!
-    links:
-      - mongo
+      ME_CONFIG_MONGODB_ADMINUSERNAME: rootuser
+      ME_CONFIG_MONGODB_ADMINPASSWORD: rootpass
+      ME_CONFIG_MONGODB_SERVER: mongodb
     networks:
-      - mongo-compose-network
+      - service-db
 
-  mongo:
-    image: mongo
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: admin
-      MONGO_INITDB_ROOT_PASSWORD: MongoDB2019!
-    ports:
-      - "27017:27017"
-    volumes:
-      - /home/diego/Documentos/dev/pessoal/loteria/Docker/Volumes/MongoDB:/data/db
-    networks:
-      - mongo-compose-network
+volumes:
+  data: {}
 
 networks:
-  mongo-compose-network:
+  service-db:
     driver: bridge

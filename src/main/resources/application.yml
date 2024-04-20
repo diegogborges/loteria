@@ -1,7 +1,10 @@
 
-
 spring:
   data:
     mongodb:
+      database: manymoments
       host: localhost
       port: 27017
+      authentication-database: admin
+      username: rootuser
+      password: rootpass
